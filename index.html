@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/space.css">
+</head>
+
+<body class="w-full h-screen scrollbar-hide">
+    
+    <!-- Botones siguiente y anterior -->
+    <div class="grid grid-cols-3 relative w-full p-4">
+        <div class="text-white items-start justify-start flex">
+            <img src="assets/ant.png" alt="Anterior" width="50" height="50" id="btn-anterior">
+        </div>
+        <div class="text-white items-center justify-center flex font-bold lg:text-4xl text-md border-b-4 border-white">Los Planetas del Sistema Solar</div>
+        <div class="text-white items-start justify-end flex">
+            <img src="assets/sig.png" alt="Siguiente" width="50" height="50" id="btn-siguiente">
+        </div>    
+    </div>
+
+    <div class="main absolute">
+    </div>
+
+    <!-- Contenido -->
+    <div class="w-full h-5/6 flex items-center justify-center">
+        <div class="relative grid lg:grid-cols-2 grid-cols-1 lg:w-3/4 w-full h-screen" id="contenido-container">
+            <!-- Contenido actual se mostrará aquí -->
+        </div>
+    </div>
+
+    <script>
+        const contenido = [
+            {
+                title: "Mercurio",
+                content: "Mercurio es el planeta más cercano al Sol en nuestro sistema solar. Es un mundo rocoso y desolado, con una superficie marcada por cráteres debido a su historia de impactos cósmicos. Su falta de atmósfera significativa lo expone a temperaturas extremadamente altas durante el día y extremadamente frías durante la noche. Mercurio tiene un movimiento de rotación lento y una órbita elíptica, lo que resulta en días muy largos en comparación con sus años. A pesar de su proximidad al Sol, no es el planeta más caliente debido a la falta de una atmósfera que retenga el calor. Su superficie presenta zonas oscuras llamadas mares y zonas más claras, con acantilados escarpados y características geológicas interesantes. Aunque es uno de los planetas más difíciles de observar desde la Tierra debido a su proximidad al Sol, las misiones espaciales han proporcionado información valiosa sobre este mundo intrigante.",
+                image: "assets/mercury.gif"
+            },
+            {
+                title: "Venus",
+                content: "Venus es un planeta similar en tamaño y composición a la Tierra, a menudo llamado el gemelo de la Tierra debido a sus similitudes en tamaño y estructura. Sin embargo, es un mundo inhóspito y extremo. Su atmósfera está compuesta principalmente de dióxido de carbono y densas nubes de ácido sulfúrico, lo que crea un efecto invernadero descontrolado que hace de Venus el planeta más caliente del sistema solar, a pesar de no ser el más cercano al Sol. Las temperaturas en la superficie de Venus son suficientemente altas para derretir plomo, y su presión atmosférica es aproximadamente 90 veces la de la Tierra al nivel del mar. Además, Venus tiene un movimiento de rotación retrógrado, lo que significa que gira en dirección opuesta a la mayoría de los otros planetas. Su superficie está cubierta de llanuras volcánicas, enormes cadenas montañosas y cráteres de impacto, aunque gran parte de su topografía está oculta por su densa atmósfera.",
+                image: "assets/venus.gif"
+            },
+            {
+                title: "Planeta Tierra",
+                content: "La Tierra es nuestro hogar planetario en el sistema solar. Es un mundo diverso y dinámico, caracterizado por una mezcla única de agua y tierra. Su atmósfera, compuesta principalmente de nitrógeno y oxígeno, protege la vida al proporcionar el aire que respiramos y moderar las temperaturas. La Tierra es el único lugar conocido hasta ahora donde existe vida, en una asombrosa variedad de formas y ecosistemas. Su superficie está moldeada por la acción geológica y el flujo constante de los océanos, creando montañas, valles, océanos y continentes. A través de la interacción entre la biosfera, la geosfera, la hidrosfera y la atmósfera, la Tierra mantiene un equilibrio frágil pero vital que sustenta la vida tal como la conocemos.",
+                image: "assets/earth.gif"
+            },
+            {
+                title: "Marte",
+                content: "Marte, conocido como el Planeta Rojo, es un mundo rocoso y frío que ha capturado la imaginación de la humanidad durante mucho tiempo. Tiene una atmósfera delgada compuesta principalmente de dióxido de carbono, lo que resulta en temperaturas extremadamente bajas en su superficie. Aunque es mucho más pequeño que la Tierra, Marte alberga el monte más alto del sistema solar, el Monte Olimpo, y uno de los cañones más largos, el Valles Marineris.",
+                image: "assets/mars.gif"
+            },
+            {
+                title: "Jupiter",
+                content: "Júpiter es el gigante gaseoso más grande de nuestro sistema solar y uno de los objetos más impresionantes en el cielo nocturno. Comprende principalmente hidrógeno y helio, careciendo de una superficie sólida definida. Su característica más destacada es su Gran Mancha Roja, una tormenta gigante que ha estado activa durante siglos. Con una masa que es aproximadamente 318 veces la de la Tierra, Júpiter tiene una fuerza gravitacional poderosa y numerosas lunas. Sus cuatro lunas más grandes, conocidas como las lunas galileanas (Ío, Europa, Ganimedes y Calisto), son objetos intrigantes por derecho propio. Europa, en particular, es de gran interés debido a la posibilidad de que tenga un océano subsuperficial que podría albergar condiciones adecuadas para la vida.",
+                image: "assets/jupiter.gif"
+            },
+            {
+                title: "Saturno",
+                content: "Saturno es famoso por sus impresionantes anillos compuestos principalmente de partículas de hielo y roca. Es el segundo planeta más grande y está compuesto principalmente de hidrógeno y helio. Su sistema de anillos es único en el sistema solar y se extiende a gran distancia alrededor del planeta. Saturno tiene una serie de lunas fascinantes, y su luna Titán es especialmente intrigante debido a su densa atmósfera y la presencia de líquidos en su superficie.",
+                image: "assets/saturn.gif"
+            },
+            {
+                title: "Urano",
+                content: "Urano es un gigante gaseoso con una composición similar a la de Neptuno, pero su rasgo distintivo es que su eje de rotación está inclinado casi 90 grados con respecto a su órbita. Esto da lugar a un giro tumbado y a estaciones extremas. Urano tiene anillos y una serie de lunas, incluyendo Miranda, que muestra una geología sorprendentemente diversa.",
+                image: "assets/uranus.gif"
+            },
+            {
+                title: "Neptuno",
+                content: "Neptuno es el último planeta en nuestro sistema solar y otro gigante gaseoso. Es conocido por su color azul profundo debido a la presencia de metano en su atmósfera. Tiene vientos extremadamente fuertes y una Gran Mancha Oscura similar a la Gran Mancha Roja de Júpiter. Neptuno tiene anillos y una serie de lunas, incluyendo Tritón, que es uno de los pocos objetos conocidos en el sistema solar con actividad geológica.",
+                image: "assets/neptune.gif"
+            },
+        ];
+    
+        const contenidoContainer = document.getElementById("contenido-container");
+        const btnAnterior = document.getElementById("btn-anterior");
+        const btnSiguiente = document.getElementById("btn-siguiente");
+    
+        let currentIndex = 0;
+    
+        function mostrarContenido(index) {
+            const currentContent = contenido[index];
+            if (currentContent) {
+                const newContent = `
+                    <div class="flex items-center justify-center fade-out">
+                        <img src="${currentContent.image}" alt="${currentContent.title}" width="350" height="350">
+                    </div>
+                    <div class="flex items-center justify-center fade-out">
+                        <div class="w-full h-1/3 border-8 border-gray-900 bg-gray-800 rounded-md lg:opacity-30 opacity-0">
+                        </div>
+                        <div class="absolute w-3/6 h-1/3 p-8 overflow-y-auto scrollbar-hide mb-8 fade-out">
+                            <p class="text-sky-300 font-bold text-2xl">${currentContent.title}</p>
+                            <p class="text-white font-medium py-4 text-justify">${currentContent.content}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Agrega las clases de animación fade-in antes de actualizar el contenido
+                contenidoContainer.innerHTML = newContent;
+                setTimeout(() => {
+                    contenidoContainer.querySelectorAll('.fade-out').forEach(element => {
+                        element.classList.remove('fade-out');
+                        element.classList.add('fade-in');
+                    });
+                }, 10); // Agrega un pequeño retraso para asegurar que se apliquen las clases correctamente
+            }
+        }
+        
+        btnAnterior.addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                mostrarContenido(currentIndex);
+            }
+        });
+    
+        btnSiguiente.addEventListener("click", () => {
+            if (currentIndex < contenido.length - 1) {
+                currentIndex++;
+                mostrarContenido(currentIndex);
+            }
+        });
+    
+        // Mostrar el contenido inicial
+        mostrarContenido(currentIndex);
+    </script>
+    
+    
+</body>
+
+</html>
