@@ -5,8 +5,8 @@
 #### <p align="center"> Profesor: Michel Emanuel López Franco </p>
 #### <p align="center"> Ciclo: 2023-B </p>
 
-> ## Tarea Libre 1
+> ## Tarea Libre 1 - LINK DEL SITIO: https://zaikron.github.io/PROGINT_LIBRE1_JS/
 
 #### Se realizo una página web en la cual se muestran todos los planetas del sistema solar, así como algo de información. Se utilizo CSS Tailwind para los estilos, y para la funcionalidad de los botones se usó JavaScript.
 
-<p align="center"> <img src="https://github.com/Zaikron/Airflow_CToleranteFallas/blob/main/AirfIm/c1.PNG"/> </p>
+<p align="center"> <img src="https://github.com/Zaikron/PROGINT_LIBRE1_JS/blob/main/planets.gif"/> </p>
